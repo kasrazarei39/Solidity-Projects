@@ -20,12 +20,12 @@ contract FundMe {
     // }
 
     function getVersion() public view returns(uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0xc751E86208F0F8aF2d5CD0e29716cA7AD98B5eF5);
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
         return priceFeed.version();
     }
 
     function getPrice() public view returns(uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0xc751E86208F0F8aF2d5CD0e29716cA7AD98B5eF5);
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
         (uint80 roundId,
         int256 answer,
         uint256 startedAt,
@@ -33,7 +33,7 @@ contract FundMe {
         uint80 answerInRound)
         = priceFeed.latestRoundData();
         
-        // Or we can use this way
+        // Or we can use in this way
         // (,int256 answer,,,) = priceFeed.latestRoundData();
         return uint256(answer);
         
