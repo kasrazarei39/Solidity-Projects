@@ -11,6 +11,12 @@ contract FundMe {
 
     mapping(address => uint256) public addressToAmountFunded;
 
+    address public owner;
+
+    constructor() public{
+        owner = msg.sender;
+    }
+
     function fund() public payable {
         // 50$
         uint256 minimumUSD = 50;
@@ -43,5 +49,15 @@ contract FundMe {
         // Or we can use in this way
         // (,int256 answer,,,) = priceFeed.latestRoundData();
         return uint256(answer);
+    }
+
+    modifier onlyOwner {
+        require(msg.sender == owner, "You are not owner");
+        _;
+    }
+
+    function withdraw() public onlyOwner payable {
+        // only want the contract admin/owner
+        msg.sender.transfer(address(this).balance);
     }
 }
