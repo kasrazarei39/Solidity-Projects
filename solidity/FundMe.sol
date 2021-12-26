@@ -10,6 +10,7 @@ contract FundMe {
     using SafeMathChainlink for uint256;
 
     mapping(address => uint256) public addressToAmountFunded;
+    address[] public funders;
 
     address public owner;
 
@@ -22,7 +23,7 @@ contract FundMe {
         uint256 minimumUSD = 50;
         require(getConversionRate(msg.value) >= minimumUSD, "Error for Balance");
         addressToAmountFunded[msg.sender] += msg.value;
-
+        funders.push(msg.sender);
     }
 
     // input unit is Gwei
@@ -59,5 +60,10 @@ contract FundMe {
     function withdraw() public onlyOwner payable {
         // only want the contract admin/owner
         msg.sender.transfer(address(this).balance);
+
+        for (uint256 i = 0; i < funders.length; i++) {
+            addressToAmountFunded[funders[i]] = 0;
+        }
+        funders = new address[](0);
     }
 }

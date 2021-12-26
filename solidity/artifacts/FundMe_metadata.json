@@ -40,6 +40,25 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "funders",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "ethAmount",
 						"type": "uint256"
 					}
@@ -146,11 +165,11 @@
 			]
 		},
 		"solidity/FundMe.sol": {
-			"keccak256": "0xf5f51d9880e19b42f5afa88c6bc93909aa68cb4e0f14eadbc7caf1c038330a8b",
+			"keccak256": "0xece9e39f628144d5b147c3144784bac85999c83d9bccb17deab5e2469f95f3e2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://57e33c5a3bc24361a9a8c219cb2801073c527285dbb2f318580c600f4a05a619",
-				"dweb:/ipfs/QmR9sbzWWUVvRR3yesvNmfRCsADKfcvqLfkmNWved2Q4qE"
+				"bzz-raw://00b5932229506ee0e4f642c9b90889eee7e597f106cbfac4ece40938b80ebd73",
+				"dweb:/ipfs/QmQxLSXjWB4wvYkmwSt9JD6LVcnocEn35eya1WVWLLqvR8"
 			]
 		}
 	},
