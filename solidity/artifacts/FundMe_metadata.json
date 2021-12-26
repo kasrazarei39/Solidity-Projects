@@ -26,6 +26,32 @@
 			},
 			{
 				"inputs": [],
+				"name": "fund",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "ethAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "getConversionRate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getPrice",
 				"outputs": [
 					{
@@ -95,11 +121,11 @@
 			]
 		},
 		"solidity/FundMe.sol": {
-			"keccak256": "0xd47189344cd609551f23ffefc74d97339c44bd0b9c2e2280260db7a45fa74d9a",
+			"keccak256": "0x7bd7fea2e7daa2ce30d8cb33a1f7335de8ca19307f028893c5804a5c371cda21",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5625d2f9fcad24ec0660639e13e6c6aa815c5a2f70c617a7b31c3b3f9ab23a60",
-				"dweb:/ipfs/QmeoP5mUxBjvaVz1qyuw4NEkM2UGerf7ByCSkzcK3ijXCE"
+				"bzz-raw://258198dadf9312867ccb2ee0fc18d37a6b2d68dbd346cc8ad1d0dbbb22f6ad68",
+				"dweb:/ipfs/QmVGEUWSRJJdLp7v2DDt4y6N8Gftz66SJgL7oKoRqu7z2z"
 			]
 		}
 	},

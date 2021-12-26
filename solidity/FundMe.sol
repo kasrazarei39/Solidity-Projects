@@ -11,13 +11,20 @@ contract FundMe {
 
     mapping(address => uint256) public addressToAmountFunded;
 
-    // function fund() public payable {
-    //     //50$
-    //     uint256 minimumUSD = 50 * 10 ** 18;
-    //     require(getConversionRate(msg.value) >= minimumUSD, "Error for Balance");
-    //     addressToAmountFunded[msg.sender] += msg.value;
+    function fund() public payable {
+        // 50$
+        uint256 minimumUSD = 50;
+        require(getConversionRate(msg.value) >= minimumUSD, "Error for Balance");
+        addressToAmountFunded[msg.sender] += msg.value;
 
-    // }
+    }
+
+    // input unit is Gwei
+    function getConversionRate(uint256 ethAmount) public view returns(uint256){
+        uint256 ethPrice = getPrice();
+        uint256 ethAmountInUsd = (ethPrice * ethAmount) / (10 ** 17);
+        return ethAmountInUsd;
+    }
 
     function getVersion() public view returns(uint256) {
         AggregatorV3Interface priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
@@ -36,6 +43,5 @@ contract FundMe {
         // Or we can use in this way
         // (,int256 answer,,,) = priceFeed.latestRoundData();
         return uint256(answer);
-        
     }
 }
