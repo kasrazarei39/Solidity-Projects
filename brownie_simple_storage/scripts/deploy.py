@@ -1,4 +1,4 @@
-from brownie import accounts
+from brownie import accounts, config
 import os
 
 
@@ -12,7 +12,11 @@ def deploy_simple_storate():
     # account = accounts.load("kasra-test")
 
     # Or we can use .env
-    account = accounts.add(os.getenv("PRIVATE_KEY"))
+    # account = accounts.add(os.getenv("PRIVATE_KEY"))
+
+
+    # Or we can define wallet in config file
+    account = accounts.add(config["wallets"]["from_key"])
     print(account)
 
 
