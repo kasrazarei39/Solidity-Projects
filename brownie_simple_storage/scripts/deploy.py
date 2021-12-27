@@ -1,10 +1,8 @@
-from brownie import accounts, config
+from brownie import accounts, config, SimpleStorage
 import os
 
 
 def deploy_simple_storate():
-    # account = accounts[0]
-
     # Create Account in safe mode:
     # commad: brownie accounts new 'name'
     # After that insert your private key and password
@@ -14,10 +12,12 @@ def deploy_simple_storate():
     # Or we can use .env
     # account = accounts.add(os.getenv("PRIVATE_KEY"))
 
-
     # Or we can define wallet in config file
-    account = accounts.add(config["wallets"]["from_key"])
-    print(account)
+    # account = accounts.add(config["wallets"]["from_key"])
+
+    account = accounts[0]
+    simple_storage = SimpleStorage.deploy({"from": account})
+    print(simple_storage)
 
 
 def main():
