@@ -1,5 +1,6 @@
 from brownie import FundMe, MockV3Aggregator, config, network
 from scripts.helpful_scripts import get_account
+from web3 import Web3
 
 
 def deploy_fund_me():
@@ -12,7 +13,7 @@ def deploy_fund_me():
         )]["eth_usd_price_feed"]
     else:
         mock_aggregaor = MockV3Aggregator.deploy(
-            18, 2000000000000000000, {"from": account})
+            18, Web3.toWei(2000, "ether"), {"from": account})
         price_feed_address = mock_aggregaor.address
     fund_me = FundMe.deploy(
         price_feed_address,
