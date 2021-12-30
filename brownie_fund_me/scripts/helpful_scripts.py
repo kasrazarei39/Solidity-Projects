@@ -1,5 +1,4 @@
 from brownie import network, accounts, config, MockV3Aggregator
-from web3 import Web3
 
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "ganache-local"]
 
@@ -17,5 +16,5 @@ def get_account():
 def deploy_mocks():
     # It can be deployed only once
     if len(MockV3Aggregator) <= 0:
-        MockV3Aggregator.deploy(DECIMALS, Web3.toWei(
-            STARTING_PRICE, "ether"), {"from": get_account()})
+        MockV3Aggregator.deploy(DECIMALS, STARTING_PRICE, {
+                                "from": get_account()})
