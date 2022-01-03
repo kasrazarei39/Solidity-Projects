@@ -14,6 +14,12 @@ contract Lottery {
         ethUsdPriceFeed = AggregatorV3Interface(_priceFeedAddress);
     }
 
+    function enter() public payable {
+        // minimum 50$
+        require(msg.value > getEntranceFee(), "Not enough ETH");
+        players.push(msg.sender);
+    }
+
     function getEntranceFee() public view returns (uint256) {
         (, int256 price, , , ) = ethUsdPriceFeed.latestRoundData();
         uint256 adjustedPrice = uint256(price) * 10**10; //already had 8 decimals and now has 18 decimals
