@@ -23,6 +23,7 @@ contract Lottery {
 
     function enter() public payable {
         // minimum 50$
+        require(lottery_state == LOTTERY_STATE.CLOSED);
         require(msg.value > getEntranceFee(), "Not enough ETH");
         players.push(msg.sender);
     }
@@ -32,5 +33,10 @@ contract Lottery {
         uint256 adjustedPrice = uint256(price) * 10**10; //already had 8 decimals and now has 18 decimals
         uint256 costToEnter = (usdEntryFee * 10**18) / adjustedPrice;
         return costToEnter;
+    }
+
+    function startLottery() public {
+        require(lottery_state == LOTTERY_STATE.CLOSED, "Can't Start new lottery");
+        lottery_state = LOTTERY_STATE.OPEN;
     }
 }
