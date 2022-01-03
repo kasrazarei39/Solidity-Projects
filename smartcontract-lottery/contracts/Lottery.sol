@@ -3,8 +3,11 @@
 pragma solidity ^0.6.6;
 
 import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Lottery {
+
+
+contract Lottery is Ownable{
     address payable[] public players;
     uint256 public usdEntryFee;
     AggregatorV3Interface internal ethUsdPriceFeed;
@@ -21,7 +24,7 @@ contract Lottery {
         lottery_state = LOTTERY_STATE.CLOSED;
     }
 
-    function enter() public payable {
+    function enter() public payable onlyOwner{
         // minimum 50$
         require(lottery_state == LOTTERY_STATE.CLOSED);
         require(msg.value > getEntranceFee(), "Not enough ETH");
